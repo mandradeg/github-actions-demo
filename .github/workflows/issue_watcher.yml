@@ -26,3 +26,19 @@ jobs:
           echo "Issue title: ${{ github.event.issue.title }}"
           echo "Issue number: #${{ github.event.issue.number }}"
           echo "Triggered by: ${{ github.actor }}"
+
+      - name: Create text file with action name and date
+        run: |
+          FILE_NAME="${{ github.event.action }}_$(date +'%Y-%m-%d').txt"
+          echo "Action: ${{ github.event.action }}" > "$FILE_NAME"
+          echo "Date: $(date +'%Y-%m-%d')" >> "$FILE_NAME"
+          echo "Issue title: ${{ github.event.issue.title }}" >> "$FILE_NAME"
+          echo "Issue number: #${{ github.event.issue.number }}" >> "$FILE_NAME"
+          echo "Triggered by: ${{ github.actor }}" >> "$FILE_NAME"
+          echo "Created file: $FILE_NAME"
+          
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: issue-event-file
+          path: "${{ github.event.action }}_$(date +'%Y-%m-%d').txt"
