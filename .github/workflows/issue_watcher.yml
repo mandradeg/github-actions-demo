@@ -36,8 +36,10 @@ jobs:
           echo "Issue number: #${{ github.event.issue.number }}" >> "$FILE_NAME"
           echo "Triggered by: ${{ github.actor }}" >> "$FILE_NAME"
           echo "Created file: $FILE_NAME"
+          echo "FILE_NAME=$FILE_NAME" >> $GITHUB_ENV  # 👈 Save filename for next step
+
       - name: Upload artifact
-        uses: actions/upload-artifact@v4.6.2
+        uses: actions/upload-artifact@v3
         with:
           name: issue-event-file
-          path: "${{ github.event.action }}_$(date +'%Y-%m-%d').txt"
+          path: ${{ env.FILE_NAME }}  # 👈 Use the environment variable from above
