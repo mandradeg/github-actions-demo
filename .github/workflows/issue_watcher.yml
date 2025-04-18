@@ -39,7 +39,7 @@ jobs:
           echo "FILE_NAME=$FILE_NAME" >> $GITHUB_ENV  # 👈 Save filename for next step
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: issue-event-file
           path: ${{ env.FILE_NAME }}  # 👈 Use the environment variable from above
