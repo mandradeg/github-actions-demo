@@ -37,7 +37,7 @@ jobs:
           echo "Triggered by: ${{ github.actor }}" >> "$FILE_NAME"
           echo "Created file: $FILE_NAME"
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: issue-event-file
           path: "${{ github.event.action }}_$(date +'%Y-%m-%d').txt"
