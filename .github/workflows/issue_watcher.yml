@@ -1,0 +1,28 @@
+name: Issue Watcher
+
+on:
+  issues:
+    types:
+      - opened
+      - edited
+      - labeled
+      - unlabeled
+      - assigned
+      - unassigned
+      - closed
+      - reopened
+      - transferred
+      - milestoned
+      - demilestoned
+
+jobs:
+  log-issue-event:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print event info
+        run: |
+          echo "🔔 Issue event triggered!"
+          echo "Action: ${{ github.event.action }}"
+          echo "Issue title: ${{ github.event.issue.title }}"
+          echo "Issue number: #${{ github.event.issue.number }}"
+          echo "Triggered by: ${{ github.actor }}"
