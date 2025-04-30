@@ -14,7 +14,13 @@ on:
       - transferred
       - milestoned
       - demilestoned
-      - comment
+
+  issue_comment:
+    types:
+      - created
+      - edited
+      - deleted
+
 
 jobs:
   log-issue-event:
