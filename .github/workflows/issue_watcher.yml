@@ -14,7 +14,7 @@ on:
       - transferred
       - milestoned
       - demilestoned
-      - commented
+      - comment
 
 jobs:
   log-issue-event:
